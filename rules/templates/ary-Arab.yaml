@@ -1,0 +1,54 @@
+# Darija in Arabic script. DRAFT by Claude: Hakim to review every line before use.
+language: ary-Arab
+name: الدارجة (حروف عربية)
+status: draft
+reviewed_by: null
+list_separator: "، "
+
+answers:
+  not_sure: ما عرفتش
+
+questions:
+  age: شحال فعمر الطفل، بالشهور؟
+
+signs:
+  not_able_to_drink:
+    name: الشراب ولا الرضاعة
+    question: واش الطفل كيقدر يشرب ولا يرضع؟
+    present: ما كيقدرش يشرب ولا يرضع
+    absent: كيشرب ولا كيرضع
+  vomits_everything:
+    name: كيرجّع كلشي
+    question: واش الطفل كيرجّع كلشي اللي كياكل ولا كيشرب؟
+    present: كيرجّع كلشي
+    absent: ما كيرجّعش كلشي
+  convulsions:
+    name: التشنجات
+    question: واش جاوه التشنجات (convulsions)؟
+    present: جاوه التشنجات
+    absent: ما جاوهش التشنجات
+  lethargic_or_unconscious:
+    name: ناعس بزاف ولا فاقد الوعي
+    question: "شوف الطفل: واش ناعس بزاف ولا فاقد الوعي؟"
+    present: ناعس بزاف ولا فاقد الوعي
+    absent: فايق وكيتفاعل
+  convulsing_now:
+    name: كيتشنج دابا
+    question: واش الطفل كيتشنج دابا؟
+    present: كيتشنج دابا
+    absent: ما كيتشنجش دابا
+
+outcomes:
+  REFER_URGENT: "صيفط الطفل دغيا للمركز الصحي. علامة الخطر: {signs}. خلّي الطفل سخون فالطريق."
+  NO_DANGER_SIGN: "ما كاينة حتى علامة ديال الخطر. كمّل الفحص العادي. هادا ماشي تشخيص."
+  UNSURE: "ماشي متأكدين. سوّل الفرملي ولا الطبيب قبل ما تقرر. {reason}"
+
+reasons:
+  not_checked: "ما تشافش: {signs}."
+  age_unknown: "عمر الطفل ما معروفش."
+  age_out_of_scope: "هاد الدليل غير للدراري من شهرين حتى 5 سنين."
+
+warnings:
+  overridden: "بدّلتي داكشي اللي قرا البرنامج ف: {signs}."
+  convulsing_now_without_history: "عاود شوف: كيتشنج دابا، ولكن ما تسجلوش التشنجات."
+  temperature_implausible: "عاود شوف الحرارة: {value} درجة ماشي معقولة."

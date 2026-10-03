@@ -1,0 +1,54 @@
+# Kiswahili. DRAFT by Claude, UNVERIFIED: needs a native speaker before any real use.
+language: sw
+name: Kiswahili
+status: draft
+reviewed_by: null
+list_separator: ", "
+
+answers:
+  not_sure: Sina uhakika
+
+questions:
+  age: Mtoto ana umri wa miezi mingapi?
+
+signs:
+  not_able_to_drink:
+    name: kunywa au kunyonya
+    question: Je, mtoto anaweza kunywa au kunyonya?
+    present: Hawezi kunywa wala kunyonya
+    absent: Anakunywa au ananyonya
+  vomits_everything:
+    name: kutapika kila kitu
+    question: Je, mtoto anatapika kila kitu?
+    present: Anatapika kila kitu
+    absent: Hatapiki kila kitu
+  convulsions:
+    name: degedege
+    question: Je, mtoto amepata degedege?
+    present: Amepata degedege
+    absent: Hajapata degedege
+  lethargic_or_unconscious:
+    name: kulegea sana au kupoteza fahamu
+    question: "Mwangalie mtoto: je, amelegea sana au amepoteza fahamu?"
+    present: Amelegea sana au amepoteza fahamu
+    absent: Yuko macho na anaitikia
+  convulsing_now:
+    name: degedege sasa hivi
+    question: Je, mtoto ana degedege sasa hivi?
+    present: Ana degedege sasa hivi
+    absent: Hana degedege sasa hivi
+
+outcomes:
+  REFER_URGENT: "Mpeleke mtoto kituo cha afya HARAKA. Dalili ya hatari: {signs}. Mweke mtoto katika joto njiani."
+  NO_DANGER_SIGN: "Hakuna dalili ya hatari. Endelea na uchunguzi wa kawaida. Huu si utambuzi wa ugonjwa."
+  UNSURE: "Hatuna uhakika. Muulize muuguzi au daktari kabla ya kuamua. {reason}"
+
+reasons:
+  not_checked: "Haijaangaliwa: {signs}."
+  age_unknown: "Umri wa mtoto haujulikani."
+  age_out_of_scope: "Mwongozo huu ni kwa watoto wa miezi 2 hadi miaka 5."
+
+warnings:
+  overridden: "Umebadilisha alichosoma programu kwa: {signs}."
+  convulsing_now_without_history: "Angalia tena: ana degedege sasa, lakini degedege halijaandikwa."
+  temperature_implausible: "Angalia joto tena: {value} °C haionekani sawa."

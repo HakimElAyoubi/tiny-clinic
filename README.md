@@ -1,6 +1,6 @@
 # Tiny Clinic
 
-Offline referral and documentation support for community health workers, in Swahili, on a phone they already have.
+Offline referral and documentation support for community health workers in rural Morocco, in Darija, on a phone they already have.
 
 Built for the **Hack-Nation × World Bank Small AI for Development Hackathon**, Track A: Health (3–4 October 2026).
 
@@ -8,19 +8,35 @@ Built for the **Hack-Nation × World Bank Small AI for Development Hackathon**, 
 
 Community health workers triage sick children with the WHO IMCI paper chart. The charts wear out, steps get skipped, and record-keeping eats the time they have for each patient. Connectivity is weak or absent, and phones are low-end.
 
-AI could help, but small models handle low-resource languages poorly. Tokenisers are trained mostly on English, so the same sentence in Swahili costs several times more tokens. On a small, offline model, that means slower answers, more battery drain and worse reasoning, all in the language that needs support most. We call this the **tokeniser tax**.
+AI could help, but small models handle low-resource languages poorly. Tokenisers are trained mostly on English, so the same sentence in Darija or Swahili costs 1.5 to 2 times as many tokens even on good tokenisers, and 4.5 to 10 times in Tamazight ([measured](docs/tokenizer_tax.md)). On a small, offline model, that means slower answers, more battery drain and worse reasoning, all in the language that needs support most. We call this the **tokeniser tax**.
 
 ## How it works
 
 Tiny Clinic splits the work so the small model never reasons about medicine:
 
-1. **The model understands.** A small quantised model reads the health worker's free-text note (Swahili, English or a mix) and fills typed slots in a compact case record. Grammar-constrained decoding guarantees the output is always valid.
+1. **The model understands.** A small quantised model reads the health worker's free-text note (Darija in Arabic script or Arabizi, French, Swahili, or a mix) and fills typed slots in a compact case record. Grammar-constrained decoding guarantees the output is always valid.
 2. **The engine decides.** A deterministic rule engine runs the IMCI protocol, compiled into rules. It is exact and auditable, and every result cites the protocol step behind it.
 3. **Templates speak.** Questions and advice come from a fixed list of pre-translated templates. The model never writes medical advice.
 
 If information is missing, unclear or contradictory, the result is **UNSURE: ask a clinician**. The health worker always makes the final call.
 
 Each case is saved on the phone as one short, de-identified line and sent to DHIS2 by SMS when a signal appears (store-and-forward).
+
+## Rule engine
+
+The engine, not the model, makes the decision. The rules live in [`rules/danger_signs.yaml`](rules/danger_signs.yaml) (IMCI general danger signs, WHO Chart Booklet 2014, page 1). Everything the app can say lives in [`rules/templates/`](rules/templates/): English is the reference; French, Darija (both scripts) and Swahili are drafts awaiting native review.
+
+```bash
+uv run python -m engine decide "A24 F | C:FEV D2 T38.9 | DRK? VOM1 CNV0 LTH? CNN0" --lang ary-Latn
+uv run python -m engine decide "A? F | C:CGH D3 T? | DRK? VOM? CNV? LTH? CNN?" --ask
+uv run pytest
+```
+
+- A danger sign the note reads as present refers at once. Referral never waits for missing answers.
+- "No danger sign" needs every sign and the age either confirmed by the health worker or read with confidence of at least 0.9.
+- "Not sure" leads to "ask a clinician", never to "no danger sign", and never cancels a sign the note reads as present.
+- [`tests/test_safety.py`](tests/test_safety.py) checks this over every combination of model readings, including 7,776 simulated visits in which no real danger sign is missed.
+- The model's output is constrained by [`rules/record.gbnf`](rules/record.gbnf), generated from the same YAML.
 
 ## Status
 

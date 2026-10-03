@@ -1,0 +1,54 @@
+# Tout ce que l'outil peut afficher, en français. Brouillon à relire.
+language: fr
+name: Français
+status: draft
+reviewed_by: null
+list_separator: ", "
+
+answers:
+  not_sure: Pas sûr
+
+questions:
+  age: Quel âge a l'enfant, en mois ?
+
+signs:
+  not_able_to_drink:
+    name: boire ou téter
+    question: L'enfant peut-il boire ou téter ?
+    present: Incapable de boire ou de téter
+    absent: Boit ou tète
+  vomits_everything:
+    name: vomit tout
+    question: L'enfant vomit-il tout ce qu'il prend ?
+    present: Vomit tout
+    absent: Ne vomit pas tout
+  convulsions:
+    name: convulsions
+    question: L'enfant a-t-il eu des convulsions ?
+    present: A eu des convulsions
+    absent: Pas de convulsions
+  lethargic_or_unconscious:
+    name: léthargique ou inconscient
+    question: "Observez l'enfant : est-il léthargique ou inconscient ?"
+    present: Léthargique ou inconscient
+    absent: Éveillé et réactif
+  convulsing_now:
+    name: convulse maintenant
+    question: L'enfant convulse-t-il en ce moment ?
+    present: Convulse en ce moment
+    absent: Ne convulse pas en ce moment
+
+outcomes:
+  REFER_URGENT: "Référer d'URGENCE au centre de santé. Signe de danger : {signs}. Garder l'enfant au chaud pendant le trajet."
+  NO_DANGER_SIGN: "Aucun signe général de danger. Poursuivre l'évaluation habituelle. Ceci n'est pas un diagnostic."
+  UNSURE: "Pas sûr. Demander à un infirmier ou à un médecin avant de décider. {reason}"
+
+reasons:
+  not_checked: "Non vérifié : {signs}."
+  age_unknown: "L'âge de l'enfant est inconnu."
+  age_out_of_scope: "Ce guide concerne les enfants de 2 mois à 5 ans."
+
+warnings:
+  overridden: "Vous avez corrigé la lecture de l'outil pour : {signs}."
+  convulsing_now_without_history: "Vérifier : convulse en ce moment, mais aucune convulsion n'est notée."
+  temperature_implausible: "Vérifier la température : {value} °C semble incorrecte."

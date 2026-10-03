@@ -1,0 +1,55 @@
+# Darija in Arabizi (DODa convention: 3 = ع, 7 = ح, 9 = ق, 2 = ء, ch = ش, kh = خ, gh = غ).
+# DRAFT by Claude: Hakim to review every line before use.
+language: ary-Latn
+name: Darija (Arabizi)
+status: draft
+reviewed_by: null
+list_separator: ", "
+
+answers:
+  not_sure: Ma 3reftch
+
+questions:
+  age: Ch7al f 3mr tfl, b chhour?
+
+signs:
+  not_able_to_drink:
+    name: chrab wla rda3a
+    question: Wach tfl kay9der ychrb wla yrda3?
+    present: Ma kay9derch ychrb wla yrda3
+    absent: Kaychrb wla kayrda3
+  vomits_everything:
+    name: kayrejje3 kolchi
+    question: Wach tfl kayrejje3 kolchi li kayakol wla kaychrb?
+    present: Kayrejje3 kolchi
+    absent: Ma kayrejje3ch kolchi
+  convulsions:
+    name: tachannojat
+    question: Wach jawh tachannojat (convulsions)?
+    present: Jawh tachannojat
+    absent: Ma jawhch tachannojat
+  lethargic_or_unconscious:
+    name: na3s bzzaf wla fa9d lwa3y
+    question: "Chouf tfl: wach na3s bzzaf wla fa9d lwa3y?"
+    present: Na3s bzzaf wla fa9d lwa3y
+    absent: Fay9 w kayjawb
+  convulsing_now:
+    name: kaytchennej dba
+    question: Wach tfl kaytchennej dba?
+    present: Kaytchennej dba
+    absent: Ma kaytchennejch dba
+
+outcomes:
+  REFER_URGENT: "Sifet tfl dghya l lmarkaz s-s7i. 3alamat lkhatar: {signs}. Khalli tfl skhoun f triq."
+  NO_DANGER_SIGN: "Ma kayna 7tta 3alama dyal lkhatar. Kemmel lfa7s l3adi. Hada machi tachkhis."
+  UNSURE: "Machi mt2akkdin. Sowwel lfermli wla tbib 9bel ma t9errer. {reason}"
+
+reasons:
+  not_checked: "Ma tchafch: {signs}."
+  age_unknown: "3mr tfl ma ma3roufch."
+  age_out_of_scope: "Had dalil ghir l drari mn chherin 7tta 5 snin."
+
+warnings:
+  overridden: "Beddelti dakchi li 9ra lprogram f: {signs}."
+  convulsing_now_without_history: "3awed chouf: kaytchennej dba, walakin ma tsejjlouch tachannojat."
+  temperature_implausible: "3awed chouf l7rara: {value} daraja machi m3a9oula."

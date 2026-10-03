@@ -1,0 +1,55 @@
+# Everything the tool can say, in English. The model never writes advice: the app
+# only shows these strings. Placeholders: {signs}, {reason}, {value}.
+language: en
+name: English
+status: reference
+reviewed_by: null
+list_separator: ", "
+
+answers:
+  not_sure: Not sure
+
+questions:
+  age: How old is the child, in months?
+
+signs:
+  not_able_to_drink:
+    name: drinking or breastfeeding
+    question: Is the child able to drink or breastfeed?
+    present: Not able to drink or breastfeed
+    absent: Drinks or breastfeeds
+  vomits_everything:
+    name: vomiting everything
+    question: Does the child vomit everything?
+    present: Vomits everything
+    absent: Does not vomit everything
+  convulsions:
+    name: convulsions
+    question: Has the child had convulsions?
+    present: Has had convulsions
+    absent: No convulsions
+  lethargic_or_unconscious:
+    name: lethargic or unconscious
+    question: "Look at the child: is the child lethargic or unconscious?"
+    present: Lethargic or unconscious
+    absent: Awake and alert
+  convulsing_now:
+    name: convulsing now
+    question: Is the child convulsing now?
+    present: Convulsing now
+    absent: Not convulsing now
+
+outcomes:
+  REFER_URGENT: "Refer URGENTLY to the health centre. Danger sign: {signs}. Keep the child warm on the way."
+  NO_DANGER_SIGN: "No general danger sign. Continue the usual assessment. This is not a diagnosis."
+  UNSURE: "Not sure. Ask a nurse or doctor before deciding. {reason}"
+
+reasons:
+  not_checked: "Not checked: {signs}."
+  age_unknown: "The child's age is unknown."
+  age_out_of_scope: "This guide is for children aged 2 months to 5 years."
+
+warnings:
+  overridden: "You changed what the tool read for: {signs}."
+  convulsing_now_without_history: "Check again: convulsing now, but no convulsions recorded."
+  temperature_implausible: "Check the temperature: {value} °C looks wrong."

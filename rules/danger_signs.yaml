@@ -1,0 +1,70 @@
+# Tiny Clinic rule pack: IMCI general danger signs, sick child 2 months up to 5 years.
+#
+# The Python engine (engine/) and the phone app read this same file, so every
+# outcome traces back to the source box below. Change rules here, never in code.
+
+id: imci-general-danger-signs
+version: 0.1.0
+
+source:
+  title: "Integrated Management of Childhood Illness: Chart Booklet"
+  publisher: World Health Organization
+  year: 2014
+  page: "Page 1, Check for general danger signs (sick child age 2 months up to 5 years)"
+  url: "https://www.who.int/publications/m/item/integrated-management-of-childhood-illness---chart-booklet-(march-2014)"
+  wording_checked: "2026-10-03, against the booklet PDF"
+  clinical_review: pending
+
+classification:
+  id: very_severe_disease
+  colour: pink
+  # What the booklet says for this box. The tool only tells a community health
+  # worker to refer urgently; medicines in the pink row are for health facilities.
+  cite: "IMCI Chart Booklet (WHO, 2014), p. 1: any general danger sign = Pink, VERY SEVERE DISEASE, refer URGENTLY"
+
+scope:
+  min_age_months: 2
+  max_age_months: 59
+
+policy:
+  # The model reads the health worker's note. A sign it reads as ABSENT counts only at
+  # or above this confidence; below it, or with no confidence at all, the app asks the
+  # health worker. A sign read as PRESENT always counts: referral is never delayed.
+  model_absent_min_confidence: 0.9
+
+# Protocol order: the three ASK questions, then the two LOOK checks.
+danger_signs:
+  - id: not_able_to_drink
+    code: DRK
+    check: ask
+  - id: vomits_everything
+    code: VOM
+    check: ask
+  - id: convulsions
+    code: CNV
+    check: ask
+  - id: lethargic_or_unconscious
+    code: LTH
+    check: look
+  - id: convulsing_now
+    code: CNN
+    check: look
+
+# Readings that cannot both be true. They never change the outcome; they ask the
+# health worker to look again.
+consistency:
+  - if_present: convulsing_now
+    expect_present: convulsions
+    warning: convulsing_now_without_history
+
+# The compact case record the model writes (see engine/record.py). Codes will be
+# re-checked to be single tokens in the chosen model's tokenizer.
+record:
+  complaints:
+    CGH: cough or difficult breathing
+    DIA: diarrhoea
+    FEV: fever
+    EAR: ear problem
+    OTH: other
+  max_complaints: 4
+  temperature_plausible_c: [34.0, 43.0]

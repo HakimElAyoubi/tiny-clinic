@@ -1,0 +1,10 @@
+# Case record for imci-general-danger-signs 0.1.0. Generated from rules/danger_signs.yaml
+# by `python -m engine grammar --write`; edit the YAML, not this file.
+root        ::= "A" number " " sex " | C:" complaints " D" number " T" temperature " | " signs
+number      ::= [0-9] | [1-9] [0-9] | "?"
+sex         ::= "M" | "F" | "?"
+complaints  ::= complaint ("," complaint)? ("," complaint)? ("," complaint)? | "?"
+complaint   ::= "CGH" | "DIA" | "FEV" | "EAR" | "OTH"
+temperature ::= [34] [0-9] "." [0-9] | "?"
+signs       ::= "DRK" sign " " "VOM" sign " " "CNV" sign " " "LTH" sign " " "CNN" sign
+sign        ::= "1" | "0" | "?"

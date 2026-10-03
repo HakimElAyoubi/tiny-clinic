@@ -1,0 +1,103 @@
+# Shared test vectors: the Python engine (tests/test_vectors.py) and the phone app run
+# the same cases, so both engines must agree.
+#
+# record:     what the model wrote
+# confidence: the model's confidence, one number for every slot or {slot: n, default: n};
+#             omitted = no confidence, so absent signs and the age must be confirmed
+# answers:    what the health worker tapped: present / absent / not_sure, or months for age
+# expect:     outcome, plus any of present / questions / pending / reasons / warnings (in order)
+
+- name: a present sign refers at once, even with others unknown
+  record: "A24 F | C:FEV D2 T38.9 | DRK? VOM1 CNV? LTH? CNN?"
+  expect:
+    outcome: REFER_URGENT
+    present: [vomits_everything]
+    pending: [not_able_to_drink, convulsions, lethargic_or_unconscious, convulsing_now]
+
+- name: without confidence, every absent reading and the age are confirmed
+  record: "A24 F | C:FEV D2 T38.9 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  expect:
+    outcome: NEED_INFO
+    questions: [age, not_able_to_drink, vomits_everything, convulsions, lethargic_or_unconscious, convulsing_now]
+
+- name: confident absent readings need no questions
+  record: "A24 F | C:FEV D2 T38.9 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  expect: {outcome: NO_DANGER_SIGN}
+
+- name: only the low-confidence reading is asked
+  record: "A24 F | C:CGH D3 T? | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: {default: 0.95, lethargic_or_unconscious: 0.6}
+  expect: {outcome: NEED_INFO, questions: [lethargic_or_unconscious]}
+
+- name: health worker confirms the age and every sign absent
+  record: "A30 M | C:DIA D1 T37.2 | DRK? VOM? CNV? LTH? CNN?"
+  answers: {age: 30, not_able_to_drink: absent, vomits_everything: absent, convulsions: absent,
+            lethargic_or_unconscious: absent, convulsing_now: absent}
+  expect: {outcome: NO_DANGER_SIGN}
+
+- name: not sure about one sign means ask a clinician
+  record: "A30 M | C:DIA D1 T37.2 | DRK? VOM? CNV? LTH? CNN?"
+  answers: {age: 30, not_able_to_drink: absent, vomits_everything: absent, convulsions: not_sure,
+            lethargic_or_unconscious: absent, convulsing_now: absent}
+  expect: {outcome: UNSURE, reasons: [not_checked]}
+
+- name: a sign the health worker finds refers
+  record: "A30 M | C:DIA D1 T37.2 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  answers: {lethargic_or_unconscious: present}
+  expect: {outcome: REFER_URGENT, present: [lethargic_or_unconscious], pending: [], warnings: [overridden]}
+
+- name: the health worker can correct a false alarm, and it is logged
+  record: "A30 M | C:FEV D2 T38.5 | DRK0 VOM1 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  answers: {vomits_everything: absent}
+  expect: {outcome: NO_DANGER_SIGN, warnings: [overridden]}
+
+- name: not sure never cancels a sign the note reads as present
+  record: "A30 M | C:FEV D2 T38.5 | DRK0 VOM1 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  answers: {vomits_everything: not_sure}
+  expect: {outcome: REFER_URGENT, present: [vomits_everything]}
+
+- name: an unknown age is asked
+  record: "A? F | C:FEV D2 T38.9 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  expect: {outcome: NEED_INFO, questions: [age]}
+
+- name: health worker gives the age
+  record: "A? F | C:FEV D2 T38.9 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  answers: {age: 14}
+  expect: {outcome: NO_DANGER_SIGN}
+
+- name: nobody knows the age
+  record: "A? F | C:FEV D2 T38.9 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  answers: {age: not_sure}
+  expect: {outcome: UNSURE, reasons: [age_unknown]}
+
+- name: a young infant is outside this protocol
+  record: "A1 F | C:FEV D1 T38.0 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  expect: {outcome: UNSURE, reasons: [age_out_of_scope]}
+
+- name: a danger sign refers whatever the age
+  record: "A1 F | C:FEV D1 T38.0 | DRK1 VOM0 CNV0 LTH0 CNN0"
+  expect: {outcome: REFER_URGENT, present: [not_able_to_drink]}
+
+- name: convulsing now with no convulsions recorded refers and asks to check
+  record: "A18 M | C:FEV D1 T39.5 | DRK0 VOM0 CNV0 LTH0 CNN1"
+  confidence: 0.95
+  expect: {outcome: REFER_URGENT, present: [convulsing_now], warnings: [convulsing_now_without_history]}
+
+- name: an implausible temperature warns but does not decide
+  record: "A24 F | C:FEV D2 T48.0 | DRK0 VOM0 CNV0 LTH0 CNN0"
+  confidence: 0.95
+  expect: {outcome: NO_DANGER_SIGN, warnings: [temperature_implausible]}
+
+- name: an unreadable record falls back to asking everything
+  record: "the child is sick"
+  expect:
+    outcome: NEED_INFO
+    questions: [age, not_able_to_drink, vomits_everything, convulsions, lethargic_or_unconscious, convulsing_now]
