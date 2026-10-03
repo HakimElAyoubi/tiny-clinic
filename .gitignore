@@ -21,3 +21,4 @@ __pycache__/
 
 # Progress files for long jobs
 data/progress/
+data/progress.nosync/

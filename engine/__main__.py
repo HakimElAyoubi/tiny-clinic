@@ -3,7 +3,8 @@
   python -m engine decide "A24 F | C:FEV D2 T38.9 | DRK? VOM0 CNV0 LTH? CNN0" --lang ary-Latn
   python -m engine decide "<record>" --ask          # answer the follow-up questions here
   python -m engine grammar [--write]                # GBNF grammar for llama.cpp
-  python -m engine check                            # rule pack, templates, grammar file
+  python -m engine export                           # JSON bundle for the Android app
+  python -m engine check                            # rule pack, templates, grammar, export
 """
 
 import argparse
@@ -11,6 +12,7 @@ import sys
 
 from . import (GRAMMAR_PATH, NEED_INFO, Case, check, decide, format_record, gbnf, load_pack,
                load_templates, question, render)
+from . import export
 
 
 def ask(q):
@@ -72,7 +74,8 @@ def main():
                    help="a health worker answer, e.g. vomits_everything=absent or age=24 (repeatable)")
     g = sub.add_parser("grammar", help="print the GBNF grammar for the case record")
     g.add_argument("--write", action="store_true", help=f"write it to {GRAMMAR_PATH.name}")
-    sub.add_parser("check", help="check the rule pack, templates and grammar file")
+    sub.add_parser("export", help="write the JSON bundle and test vectors for the Android app")
+    sub.add_parser("check", help="check the rule pack, templates, grammar file and export")
     args = parser.parse_args()
 
     pack, templates = load_pack(), load_templates()
@@ -99,7 +102,13 @@ def main():
         else:
             print(gbnf(pack), end="")
         return 0
+    if args.cmd == "export":
+        for path in export.write():
+            print(f"wrote {path}")
+        return 0
     problems = check(templates, pack)
+    if not export.is_current():
+        problems.append("the Android bundle is out of date: run python -m engine export")
     if not GRAMMAR_PATH.exists() or GRAMMAR_PATH.read_text(encoding="utf-8") != gbnf(pack):
         problems.append(f"{GRAMMAR_PATH.name} is out of date: run python -m engine grammar --write")
     for problem in problems:

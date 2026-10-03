@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Progress bars for long jobs, with a live page.
 
-Each job writes its state to data/progress/<job>.json and a one-line bar to
-data/progress/<job>.txt:
+Each job writes its state to data/progress.nosync/<job>.json and a one-line bar to
+data/progress.nosync/<job>.txt:
 
     [########------------]  40%  2.0/5.0 GB  elapsed 03:12  ETA 04:48  ndk;29.0.14206865
 
@@ -27,7 +27,8 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-PROGRESS_DIR = Path(__file__).resolve().parent.parent / "data" / "progress"
+# .nosync keeps these fast-changing files out of iCloud, which would make conflict copies.
+PROGRESS_DIR = Path(__file__).resolve().parent.parent / "data" / "progress.nosync"
 BAR_WIDTH = 20
 
 

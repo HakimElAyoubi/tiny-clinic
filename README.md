@@ -50,7 +50,8 @@ Work in progress. See the build order below.
 | `rules/` | IMCI rule packs (cough/breathing, fever, diarrhoea; 2 months to 5 years) |
 | `engine/` | Rule interpreter and missing-slot question loop |
 | `extract/` | Small-model slot extraction with constrained decoding |
-| `app/` | Web UI served locally on the device |
+| `android/` | Android app: Compose UI and the Kotlin port of the engine (`:app`), llama.cpp over JNI (`:llama`) |
+| `third_party/llama.cpp` | llama.cpp, a git submodule pinned to release v0.5.0 |
 | `eval/` | Test cases, baselines, metrics |
 | `docs/` | Pitch notes, video script, data statement |
 | `data/` | Small committed data; large downloads are ignored |

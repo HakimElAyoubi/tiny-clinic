@@ -5,7 +5,7 @@
     python3 scripts/setup_android.py brew                    # cmake, command-line tools, Android Studio
     python3 scripts/setup_android.py sdk --accept-licenses   # SDK packages, emulator image, AVD, boot test
 
-Progress goes to data/progress/android-1-brew.txt and android-2-sdk.txt
+Progress goes to data/progress.nosync/android-1-brew.txt and android-2-sdk.txt
 (live page: python3 scripts/progress.py serve). Download progress is read from
 the network counters and measured against each download's published size.
 """

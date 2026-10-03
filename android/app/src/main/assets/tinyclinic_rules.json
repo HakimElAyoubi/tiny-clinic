@@ -1,0 +1,382 @@
+{
+ "pack": {
+  "id": "imci-general-danger-signs",
+  "version": "0.1.0",
+  "source": {
+   "title": "Integrated Management of Childhood Illness: Chart Booklet",
+   "publisher": "World Health Organization",
+   "year": 2014,
+   "page": "Page 1, Check for general danger signs (sick child age 2 months up to 5 years)",
+   "url": "https://www.who.int/publications/m/item/integrated-management-of-childhood-illness---chart-booklet-(march-2014)",
+   "wording_checked": "2026-10-03, against the booklet PDF",
+   "clinical_review": "pending"
+  },
+  "classification": {
+   "id": "very_severe_disease",
+   "colour": "pink",
+   "cite": "IMCI Chart Booklet (WHO, 2014), p. 1: any general danger sign = Pink, VERY SEVERE DISEASE, refer URGENTLY"
+  },
+  "scope": {
+   "min_age_months": 2,
+   "max_age_months": 59
+  },
+  "policy": {
+   "model_absent_min_confidence": 0.9
+  },
+  "danger_signs": [
+   {
+    "id": "not_able_to_drink",
+    "code": "DRK",
+    "check": "ask"
+   },
+   {
+    "id": "vomits_everything",
+    "code": "VOM",
+    "check": "ask"
+   },
+   {
+    "id": "convulsions",
+    "code": "CNV",
+    "check": "ask"
+   },
+   {
+    "id": "lethargic_or_unconscious",
+    "code": "LTH",
+    "check": "look"
+   },
+   {
+    "id": "convulsing_now",
+    "code": "CNN",
+    "check": "look"
+   }
+  ],
+  "consistency": [
+   {
+    "if_present": "convulsing_now",
+    "expect_present": "convulsions",
+    "warning": "convulsing_now_without_history"
+   }
+  ],
+  "record": {
+   "complaints": {
+    "CGH": "cough or difficult breathing",
+    "DIA": "diarrhoea",
+    "FEV": "fever",
+    "EAR": "ear problem",
+    "OTH": "other"
+   },
+   "max_complaints": 4,
+   "temperature_plausible_c": [
+    34.0,
+    43.0
+   ]
+  }
+ },
+ "templates": {
+  "ary-Arab": {
+   "language": "ary-Arab",
+   "name": "الدارجة (حروف عربية)",
+   "status": "draft",
+   "reviewed_by": null,
+   "list_separator": "، ",
+   "answers": {
+    "not_sure": "ما عرفتش"
+   },
+   "questions": {
+    "age": "شحال فعمر الطفل، بالشهور؟"
+   },
+   "signs": {
+    "not_able_to_drink": {
+     "name": "الشراب ولا الرضاعة",
+     "question": "واش الطفل كيقدر يشرب ولا يرضع؟",
+     "present": "ما كيقدرش يشرب ولا يرضع",
+     "absent": "كيشرب ولا كيرضع"
+    },
+    "vomits_everything": {
+     "name": "كيرجّع كلشي",
+     "question": "واش الطفل كيرجّع كلشي اللي كياكل ولا كيشرب؟",
+     "present": "كيرجّع كلشي",
+     "absent": "ما كيرجّعش كلشي"
+    },
+    "convulsions": {
+     "name": "التشنجات",
+     "question": "واش جاوه التشنجات (convulsions)؟",
+     "present": "جاوه التشنجات",
+     "absent": "ما جاوهش التشنجات"
+    },
+    "lethargic_or_unconscious": {
+     "name": "ناعس بزاف ولا فاقد الوعي",
+     "question": "شوف الطفل: واش ناعس بزاف ولا فاقد الوعي؟",
+     "present": "ناعس بزاف ولا فاقد الوعي",
+     "absent": "فايق وكيتفاعل"
+    },
+    "convulsing_now": {
+     "name": "كيتشنج دابا",
+     "question": "واش الطفل كيتشنج دابا؟",
+     "present": "كيتشنج دابا",
+     "absent": "ما كيتشنجش دابا"
+    }
+   },
+   "outcomes": {
+    "REFER_URGENT": "صيفط الطفل دغيا للمركز الصحي. علامة الخطر: {signs}. خلّي الطفل سخون فالطريق.",
+    "NO_DANGER_SIGN": "ما كاينة حتى علامة ديال الخطر. كمّل الفحص العادي. هادا ماشي تشخيص.",
+    "UNSURE": "ماشي متأكدين. سوّل الفرملي ولا الطبيب قبل ما تقرر. {reason}"
+   },
+   "reasons": {
+    "not_checked": "ما تشافش: {signs}.",
+    "age_unknown": "عمر الطفل ما معروفش.",
+    "age_out_of_scope": "هاد الدليل غير للدراري من شهرين حتى 5 سنين."
+   },
+   "warnings": {
+    "overridden": "بدّلتي داكشي اللي قرا البرنامج ف: {signs}.",
+    "convulsing_now_without_history": "عاود شوف: كيتشنج دابا، ولكن ما تسجلوش التشنجات.",
+    "temperature_implausible": "عاود شوف الحرارة: {value} درجة ماشي معقولة."
+   }
+  },
+  "ary-Latn": {
+   "language": "ary-Latn",
+   "name": "Darija (Arabizi)",
+   "status": "draft",
+   "reviewed_by": null,
+   "list_separator": ", ",
+   "answers": {
+    "not_sure": "Ma 3reftch"
+   },
+   "questions": {
+    "age": "Ch7al f 3mr tfl, b chhour?"
+   },
+   "signs": {
+    "not_able_to_drink": {
+     "name": "chrab wla rda3a",
+     "question": "Wach tfl kay9der ychrb wla yrda3?",
+     "present": "Ma kay9derch ychrb wla yrda3",
+     "absent": "Kaychrb wla kayrda3"
+    },
+    "vomits_everything": {
+     "name": "kayrejje3 kolchi",
+     "question": "Wach tfl kayrejje3 kolchi li kayakol wla kaychrb?",
+     "present": "Kayrejje3 kolchi",
+     "absent": "Ma kayrejje3ch kolchi"
+    },
+    "convulsions": {
+     "name": "tachannojat",
+     "question": "Wach jawh tachannojat (convulsions)?",
+     "present": "Jawh tachannojat",
+     "absent": "Ma jawhch tachannojat"
+    },
+    "lethargic_or_unconscious": {
+     "name": "na3s bzzaf wla fa9d lwa3y",
+     "question": "Chouf tfl: wach na3s bzzaf wla fa9d lwa3y?",
+     "present": "Na3s bzzaf wla fa9d lwa3y",
+     "absent": "Fay9 w kayjawb"
+    },
+    "convulsing_now": {
+     "name": "kaytchennej dba",
+     "question": "Wach tfl kaytchennej dba?",
+     "present": "Kaytchennej dba",
+     "absent": "Ma kaytchennejch dba"
+    }
+   },
+   "outcomes": {
+    "REFER_URGENT": "Sifet tfl dghya l lmarkaz s-s7i. 3alamat lkhatar: {signs}. Khalli tfl skhoun f triq.",
+    "NO_DANGER_SIGN": "Ma kayna 7tta 3alama dyal lkhatar. Kemmel lfa7s l3adi. Hada machi tachkhis.",
+    "UNSURE": "Machi mt2akkdin. Sowwel lfermli wla tbib 9bel ma t9errer. {reason}"
+   },
+   "reasons": {
+    "not_checked": "Ma tchafch: {signs}.",
+    "age_unknown": "3mr tfl ma ma3roufch.",
+    "age_out_of_scope": "Had dalil ghir l drari mn chherin 7tta 5 snin."
+   },
+   "warnings": {
+    "overridden": "Beddelti dakchi li 9ra lprogram f: {signs}.",
+    "convulsing_now_without_history": "3awed chouf: kaytchennej dba, walakin ma tsejjlouch tachannojat.",
+    "temperature_implausible": "3awed chouf l7rara: {value} daraja machi m3a9oula."
+   }
+  },
+  "en": {
+   "language": "en",
+   "name": "English",
+   "status": "reference",
+   "reviewed_by": null,
+   "list_separator": ", ",
+   "answers": {
+    "not_sure": "Not sure"
+   },
+   "questions": {
+    "age": "How old is the child, in months?"
+   },
+   "signs": {
+    "not_able_to_drink": {
+     "name": "drinking or breastfeeding",
+     "question": "Is the child able to drink or breastfeed?",
+     "present": "Not able to drink or breastfeed",
+     "absent": "Drinks or breastfeeds"
+    },
+    "vomits_everything": {
+     "name": "vomiting everything",
+     "question": "Does the child vomit everything?",
+     "present": "Vomits everything",
+     "absent": "Does not vomit everything"
+    },
+    "convulsions": {
+     "name": "convulsions",
+     "question": "Has the child had convulsions?",
+     "present": "Has had convulsions",
+     "absent": "No convulsions"
+    },
+    "lethargic_or_unconscious": {
+     "name": "lethargic or unconscious",
+     "question": "Look at the child: is the child lethargic or unconscious?",
+     "present": "Lethargic or unconscious",
+     "absent": "Awake and alert"
+    },
+    "convulsing_now": {
+     "name": "convulsing now",
+     "question": "Is the child convulsing now?",
+     "present": "Convulsing now",
+     "absent": "Not convulsing now"
+    }
+   },
+   "outcomes": {
+    "REFER_URGENT": "Refer URGENTLY to the health centre. Danger sign: {signs}. Keep the child warm on the way.",
+    "NO_DANGER_SIGN": "No general danger sign. Continue the usual assessment. This is not a diagnosis.",
+    "UNSURE": "Not sure. Ask a nurse or doctor before deciding. {reason}"
+   },
+   "reasons": {
+    "not_checked": "Not checked: {signs}.",
+    "age_unknown": "The child's age is unknown.",
+    "age_out_of_scope": "This guide is for children aged 2 months to 5 years."
+   },
+   "warnings": {
+    "overridden": "You changed what the tool read for: {signs}.",
+    "convulsing_now_without_history": "Check again: convulsing now, but no convulsions recorded.",
+    "temperature_implausible": "Check the temperature: {value} °C looks wrong."
+   }
+  },
+  "fr": {
+   "language": "fr",
+   "name": "Français",
+   "status": "draft",
+   "reviewed_by": null,
+   "list_separator": ", ",
+   "answers": {
+    "not_sure": "Pas sûr"
+   },
+   "questions": {
+    "age": "Quel âge a l'enfant, en mois ?"
+   },
+   "signs": {
+    "not_able_to_drink": {
+     "name": "boire ou téter",
+     "question": "L'enfant peut-il boire ou téter ?",
+     "present": "Incapable de boire ou de téter",
+     "absent": "Boit ou tète"
+    },
+    "vomits_everything": {
+     "name": "vomit tout",
+     "question": "L'enfant vomit-il tout ce qu'il prend ?",
+     "present": "Vomit tout",
+     "absent": "Ne vomit pas tout"
+    },
+    "convulsions": {
+     "name": "convulsions",
+     "question": "L'enfant a-t-il eu des convulsions ?",
+     "present": "A eu des convulsions",
+     "absent": "Pas de convulsions"
+    },
+    "lethargic_or_unconscious": {
+     "name": "léthargique ou inconscient",
+     "question": "Observez l'enfant : est-il léthargique ou inconscient ?",
+     "present": "Léthargique ou inconscient",
+     "absent": "Éveillé et réactif"
+    },
+    "convulsing_now": {
+     "name": "convulse maintenant",
+     "question": "L'enfant convulse-t-il en ce moment ?",
+     "present": "Convulse en ce moment",
+     "absent": "Ne convulse pas en ce moment"
+    }
+   },
+   "outcomes": {
+    "REFER_URGENT": "Référer d'URGENCE au centre de santé. Signe de danger : {signs}. Garder l'enfant au chaud pendant le trajet.",
+    "NO_DANGER_SIGN": "Aucun signe général de danger. Poursuivre l'évaluation habituelle. Ceci n'est pas un diagnostic.",
+    "UNSURE": "Pas sûr. Demander à un infirmier ou à un médecin avant de décider. {reason}"
+   },
+   "reasons": {
+    "not_checked": "Non vérifié : {signs}.",
+    "age_unknown": "L'âge de l'enfant est inconnu.",
+    "age_out_of_scope": "Ce guide concerne les enfants de 2 mois à 5 ans."
+   },
+   "warnings": {
+    "overridden": "Vous avez corrigé la lecture de l'outil pour : {signs}.",
+    "convulsing_now_without_history": "Vérifier : convulse en ce moment, mais aucune convulsion n'est notée.",
+    "temperature_implausible": "Vérifier la température : {value} °C semble incorrecte."
+   }
+  },
+  "sw": {
+   "language": "sw",
+   "name": "Kiswahili",
+   "status": "draft",
+   "reviewed_by": null,
+   "list_separator": ", ",
+   "answers": {
+    "not_sure": "Sina uhakika"
+   },
+   "questions": {
+    "age": "Mtoto ana umri wa miezi mingapi?"
+   },
+   "signs": {
+    "not_able_to_drink": {
+     "name": "kunywa au kunyonya",
+     "question": "Je, mtoto anaweza kunywa au kunyonya?",
+     "present": "Hawezi kunywa wala kunyonya",
+     "absent": "Anakunywa au ananyonya"
+    },
+    "vomits_everything": {
+     "name": "kutapika kila kitu",
+     "question": "Je, mtoto anatapika kila kitu?",
+     "present": "Anatapika kila kitu",
+     "absent": "Hatapiki kila kitu"
+    },
+    "convulsions": {
+     "name": "degedege",
+     "question": "Je, mtoto amepata degedege?",
+     "present": "Amepata degedege",
+     "absent": "Hajapata degedege"
+    },
+    "lethargic_or_unconscious": {
+     "name": "kulegea sana au kupoteza fahamu",
+     "question": "Mwangalie mtoto: je, amelegea sana au amepoteza fahamu?",
+     "present": "Amelegea sana au amepoteza fahamu",
+     "absent": "Yuko macho na anaitikia"
+    },
+    "convulsing_now": {
+     "name": "degedege sasa hivi",
+     "question": "Je, mtoto ana degedege sasa hivi?",
+     "present": "Ana degedege sasa hivi",
+     "absent": "Hana degedege sasa hivi"
+    }
+   },
+   "outcomes": {
+    "REFER_URGENT": "Mpeleke mtoto kituo cha afya HARAKA. Dalili ya hatari: {signs}. Mweke mtoto katika joto njiani.",
+    "NO_DANGER_SIGN": "Hakuna dalili ya hatari. Endelea na uchunguzi wa kawaida. Huu si utambuzi wa ugonjwa.",
+    "UNSURE": "Hatuna uhakika. Muulize muuguzi au daktari kabla ya kuamua. {reason}"
+   },
+   "reasons": {
+    "not_checked": "Haijaangaliwa: {signs}.",
+    "age_unknown": "Umri wa mtoto haujulikani.",
+    "age_out_of_scope": "Mwongozo huu ni kwa watoto wa miezi 2 hadi miaka 5."
+   },
+   "warnings": {
+    "overridden": "Umebadilisha alichosoma programu kwa: {signs}.",
+    "convulsing_now_without_history": "Angalia tena: ana degedege sasa, lakini degedege halijaandikwa.",
+    "temperature_implausible": "Angalia joto tena: {value} °C haionekani sawa."
+   }
+  }
+ },
+ "grammar": "# Case record for imci-general-danger-signs 0.1.0. Generated from rules/danger_signs.yaml\n# by `python -m engine grammar --write`; edit the YAML, not this file.\nroot        ::= \"A\" number \" \" sex \" | C:\" complaints \" D\" number \" T\" temperature \" | \" signs\nnumber      ::= [0-9] | [1-9] [0-9] | \"?\"\nsex         ::= \"M\" | \"F\" | \"?\"\ncomplaints  ::= complaint (\",\" complaint)? (\",\" complaint)? (\",\" complaint)? | \"?\"\ncomplaint   ::= \"CGH\" | \"DIA\" | \"FEV\" | \"EAR\" | \"OTH\"\ntemperature ::= [34] [0-9] \".\" [0-9] | \"?\"\nsigns       ::= \"DRK\" sign \" \" \"VOM\" sign \" \" \"CNV\" sign \" \" \"LTH\" sign \" \" \"CNN\" sign\nsign        ::= \"1\" | \"0\" | \"?\"\n",
+ "prompt": {
+  "system": "You read a community health worker's note about a sick child and fill in a case record.\nThe note may be in Darija (Arabic or Latin letters), French, Swahili or English, often mixed.\nWrite only the record, in exactly this format:\n\nA<age in months> <sex M or F> | C:<complaints> D<days ill> T<temperature in °C> | DRK<v> VOM<v> CNV<v> LTH<v> CNN<v>\n\nComplaints, comma-separated: CGH cough or difficult breathing, DIA diarrhoea, FEV fever, EAR ear problem, OTH other.\nDanger signs: v is 1 if the note says the sign is present, 0 if it says the sign is absent,\n? if the note does not say.\nDRK not able to drink or breastfeed\nVOM vomits everything\nCNV has had convulsions\nLTH lethargic or unconscious\nCNN convulsing now\nWrite ? for anything the note does not state. Convert years to months (2 years = 24).\nNever guess a danger sign.\n\nExamples:\n\nNote: lbent 3ndha 3am w nss, sokhna mn lbare7, katkoh bzaf, katchrb w katrda3 mzyan, ma katrejje3ch\nRecord: A18 F | C:FEV,CGH D1 T? | DRK0 VOM0 CNV? LTH? CNN?\n\nNote: الولد عندو 8 شهور، فيه الإسهال هادي 3 أيام، كيرجّع كلشي، الحرارة 38.5\nRecord: A8 M | C:DIA D3 T38.5 | DRK? VOM1 CNV? LTH? CNN?\n\nNote: Garçon de 2 ans, fièvre à 39.2 depuis 2 jours, a convulsé hier soir, ne boit plus.\nRecord: A24 M | C:FEV D2 T39.2 | DRK1 VOM? CNV1 LTH? CNN?\n\nNote: bent 4 ans, fièvre w toux mn 5 jours, fay9a w kat3ref kolchi, ma jatha 7ta convulsion\nRecord: A48 F | C:FEV,CGH D5 T? | DRK? VOM? CNV0 LTH0 CNN?\n\nNote: Mtoto wa kiume miezi 10, ana kuhara siku 4, hawezi kunyonya, amelegea sana\nRecord: A10 M | C:DIA D4 T? | DRK1 VOM? CNV? LTH1 CNN?\n\nNote: 3 year old girl, ear pain for 2 days, temp 37.8, playing normally, drinking well, no vomiting\nRecord: A36 F | C:EAR D2 T37.8 | DRK0 VOM0 CNV? LTH0 CNN?\n\nNote: البنت عندها عامين، كتشنج دابا، فيها السخونة\nRecord: A24 F | C:FEV D? T? | DRK? VOM? CNV1 LTH? CNN1",
+  "user_prefix": "Note: "
+ }
+}

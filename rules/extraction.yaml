@@ -1,0 +1,34 @@
+# What the model sees before every note: instructions and worked examples.
+# The phone app and the evaluation use this same file (engine/prompt.py builds the prompt).
+# Example notes are DRAFTS by Claude: Hakim to check the Darija. Never reuse them as test cases.
+
+instructions: |
+  You read a community health worker's note about a sick child and fill in a case record.
+  The note may be in Darija (Arabic or Latin letters), French, Swahili or English, often mixed.
+  Write only the record, in exactly this format:
+
+  A<age in months> <sex M or F> | C:<complaints> D<days ill> T<temperature in °C> | DRK<v> VOM<v> CNV<v> LTH<v> CNN<v>
+
+  Complaints, comma-separated: {complaints}.
+  Danger signs: v is 1 if the note says the sign is present, 0 if it says the sign is absent,
+  ? if the note does not say.
+  {signs}
+  Write ? for anything the note does not state. Convert years to months (2 years = 24).
+  Never guess a danger sign.
+
+# Shown to the model as worked examples, in this order.
+examples:
+  - note: "lbent 3ndha 3am w nss, sokhna mn lbare7, katkoh bzaf, katchrb w katrda3 mzyan, ma katrejje3ch"
+    record: "A18 F | C:FEV,CGH D1 T? | DRK0 VOM0 CNV? LTH? CNN?"
+  - note: "الولد عندو 8 شهور، فيه الإسهال هادي 3 أيام، كيرجّع كلشي، الحرارة 38.5"
+    record: "A8 M | C:DIA D3 T38.5 | DRK? VOM1 CNV? LTH? CNN?"
+  - note: "Garçon de 2 ans, fièvre à 39.2 depuis 2 jours, a convulsé hier soir, ne boit plus."
+    record: "A24 M | C:FEV D2 T39.2 | DRK1 VOM? CNV1 LTH? CNN?"
+  - note: "bent 4 ans, fièvre w toux mn 5 jours, fay9a w kat3ref kolchi, ma jatha 7ta convulsion"
+    record: "A48 F | C:FEV,CGH D5 T? | DRK? VOM? CNV0 LTH0 CNN?"
+  - note: "Mtoto wa kiume miezi 10, ana kuhara siku 4, hawezi kunyonya, amelegea sana"
+    record: "A10 M | C:DIA D4 T? | DRK1 VOM? CNV? LTH1 CNN?"
+  - note: "3 year old girl, ear pain for 2 days, temp 37.8, playing normally, drinking well, no vomiting"
+    record: "A36 F | C:EAR D2 T37.8 | DRK0 VOM0 CNV? LTH0 CNN?"
+  - note: "البنت عندها عامين، كتشنج دابا، فيها السخونة"
+    record: "A24 F | C:FEV D? T? | DRK? VOM? CNV1 LTH? CNN1"

@@ -1,0 +1,11 @@
+.gradle/
+.kotlin/
+build/
+.cxx/
+.idea/
+*.iml
+local.properties
+captures/
+build.nosync/
+.cxx.nosync/
+.gradle.nosync/

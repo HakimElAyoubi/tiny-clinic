@@ -5,7 +5,7 @@
 - DODa sentences (Darija Open Dataset, CC BY-NC 4.0): Arabizi, Arabic script, English
 - tokenizer.json of each candidate on-device model (Hugging Face, ungated repos)
 
-Progress: data/progress/fetch-data.txt (live page: python3 scripts/progress.py serve).
+Progress: data/progress.nosync/fetch-data.txt (live page: python3 scripts/progress.py serve).
 """
 
 import io
