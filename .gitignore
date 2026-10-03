@@ -1,0 +1,23 @@
+# Model weights: side-loaded, never committed
+models/
+*.gguf
+*.bin
+*.safetensors
+
+# Downloaded datasets (fetched by scripts, documented in README)
+data/raw/
+data/flores*/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Progress files for long jobs
+data/progress.txt
