@@ -57,7 +57,8 @@ Every dataset is listed with source, license, size and **what it does not cover*
 
 | Dataset | Use | License | Size | Does not cover |
 |---|---|---|---|---|
-| FLORES-200 (Meta) | Tokeniser-tax measurement | CC-BY-SA 4.0 | TBD | Clinical vocabulary; spoken or informal text |
+| FLORES-200 devtest (Meta) | Tokeniser-tax measurement | CC-BY-SA 4.0 | 1,012 sentences × 6 languages | Clinical vocabulary; spoken or informal text |
+| DODa sentences (Darija Open Dataset) | Tokeniser tax, Arabizi vs Arabic script | CC BY-NC 4.0 (non-commercial: measurement only, never training) | 48,818 sentences | Clinical vocabulary; Arabizi spellings other than DODa's convention |
 | World Bank Service Delivery Indicators | Problem evidence | TBD | TBD | TBD |
 | WHO Global Health Observatory | Health-worker density | TBD | TBD | TBD |
 | GSMA Mobile Gender Gap Report | Device ownership | TBD | TBD | TBD |

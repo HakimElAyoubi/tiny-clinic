@@ -1,0 +1,64 @@
+model,model_label,vocab,language,language_label,dataset,sentences,tokens,english_tokens,premium,tiny_clinic_language
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,fra,French,flores,1012,36852,27036,1.3631,False
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,arb,Arabic (MSA),flores,1012,40459,27036,1.4965,False
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,42403,27036,1.5684,True
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,479448,297100,1.6138,True
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,523225,297100,1.7611,True
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,swh,Swahili,flores,1012,43580,27036,1.6119,True
+atlas-chat-2b,Atlas-Chat 2B (Darija-tuned Gemma 2),256000,tzm,"Tamazight, Tifinagh",flores,1012,134192,27036,4.9635,False
+gemma-4-e2b,Gemma 4 E2B,262144,fra,French,flores,1012,38279,27114,1.4118,False
+gemma-4-e2b,Gemma 4 E2B,262144,arb,Arabic (MSA),flores,1012,39885,27114,1.471,False
+gemma-4-e2b,Gemma 4 E2B,262144,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,41287,27114,1.5227,True
+gemma-4-e2b,Gemma 4 E2B,262144,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,458848,297925,1.5401,True
+gemma-4-e2b,Gemma 4 E2B,262144,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,529403,297925,1.777,True
+gemma-4-e2b,Gemma 4 E2B,262144,swh,Swahili,flores,1012,44435,27114,1.6388,True
+gemma-4-e2b,Gemma 4 E2B,262144,tzm,"Tamazight, Tifinagh",flores,1012,120878,27114,4.4581,False
+gemma-3-1b,Gemma 3 1B,262145,fra,French,flores,1012,38279,27114,1.4118,False
+gemma-3-1b,Gemma 3 1B,262145,arb,Arabic (MSA),flores,1012,39885,27114,1.471,False
+gemma-3-1b,Gemma 3 1B,262145,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,41287,27114,1.5227,True
+gemma-3-1b,Gemma 3 1B,262145,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,458848,297925,1.5401,True
+gemma-3-1b,Gemma 3 1B,262145,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,529403,297925,1.777,True
+gemma-3-1b,Gemma 3 1B,262145,swh,Swahili,flores,1012,44435,27114,1.6388,True
+gemma-3-1b,Gemma 3 1B,262145,tzm,"Tamazight, Tifinagh",flores,1012,120878,27114,4.4581,False
+qwen3.5-2b,Qwen3.5 2B,248070,fra,French,flores,1012,38436,27530,1.3961,False
+qwen3.5-2b,Qwen3.5 2B,248070,arb,Arabic (MSA),flores,1012,36040,27530,1.3091,False
+qwen3.5-2b,Qwen3.5 2B,248070,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,39158,27530,1.4224,True
+qwen3.5-2b,Qwen3.5 2B,248070,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,468791,291467,1.6084,True
+qwen3.5-2b,Qwen3.5 2B,248070,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,543970,291467,1.8663,True
+qwen3.5-2b,Qwen3.5 2B,248070,swh,Swahili,flores,1012,50137,27530,1.8212,True
+qwen3.5-2b,Qwen3.5 2B,248070,tzm,"Tamazight, Tifinagh",flores,1012,273139,27530,9.9215,False
+qwen3-1.7b,Qwen3 1.7B,151669,fra,French,flores,1012,43694,27621,1.5819,False
+qwen3-1.7b,Qwen3 1.7B,151669,arb,Arabic (MSA),flores,1012,44991,27621,1.6289,False
+qwen3-1.7b,Qwen3 1.7B,151669,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,46801,27621,1.6944,True
+qwen3-1.7b,Qwen3 1.7B,151669,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,527551,292120,1.8059,True
+qwen3-1.7b,Qwen3 1.7B,151669,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,566986,292120,1.9409,True
+qwen3-1.7b,Qwen3 1.7B,151669,swh,Swahili,flores,1012,53483,27621,1.9363,True
+qwen3-1.7b,Qwen3 1.7B,151669,tzm,"Tamazight, Tifinagh",flores,1012,138733,27621,5.0227,False
+llama-3.2-1b,Llama 3.2 1B,128256,fra,French,flores,1012,43520,27171,1.6017,False
+llama-3.2-1b,Llama 3.2 1B,128256,arb,Arabic (MSA),flores,1012,44918,27171,1.6532,False
+llama-3.2-1b,Llama 3.2 1B,128256,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,46327,27171,1.705,True
+llama-3.2-1b,Llama 3.2 1B,128256,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,515870,291803,1.7679,True
+llama-3.2-1b,Llama 3.2 1B,128256,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,561300,291803,1.9236,True
+llama-3.2-1b,Llama 3.2 1B,128256,swh,Swahili,flores,1012,52462,27171,1.9308,True
+llama-3.2-1b,Llama 3.2 1B,128256,tzm,"Tamazight, Tifinagh",flores,1012,272699,27171,10.0364,False
+phi-4-mini,Phi-4 mini,200029,fra,French,flores,1012,36808,26873,1.3697,False
+phi-4-mini,Phi-4 mini,200029,arb,Arabic (MSA),flores,1012,37117,26873,1.3812,False
+phi-4-mini,Phi-4 mini,200029,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,39849,26873,1.4829,True
+phi-4-mini,Phi-4 mini,200029,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,470173,283489,1.6585,True
+phi-4-mini,Phi-4 mini,200029,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,527739,283489,1.8616,True
+phi-4-mini,Phi-4 mini,200029,swh,Swahili,flores,1012,39924,26873,1.4857,True
+phi-4-mini,Phi-4 mini,200029,tzm,"Tamazight, Tifinagh",flores,1012,272694,26873,10.1475,False
+lfm2.5-1.2b,LFM2.5 1.2B,64402,fra,French,flores,1012,39953,27694,1.4427,False
+lfm2.5-1.2b,LFM2.5 1.2B,64402,arb,Arabic (MSA),flores,1012,52453,27694,1.894,False
+lfm2.5-1.2b,LFM2.5 1.2B,64402,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,53864,27694,1.945,True
+lfm2.5-1.2b,LFM2.5 1.2B,64402,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,597462,299248,1.9965,True
+lfm2.5-1.2b,LFM2.5 1.2B,64402,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,587149,299248,1.9621,True
+lfm2.5-1.2b,LFM2.5 1.2B,64402,swh,Swahili,flores,1012,55034,27694,1.9872,True
+lfm2.5-1.2b,LFM2.5 1.2B,64402,tzm,"Tamazight, Tifinagh",flores,1012,272707,27694,9.8472,False
+smollm2-1.7b,SmolLM2 1.7B,49152,fra,French,flores,1012,53722,27721,1.938,False
+smollm2-1.7b,SmolLM2 1.7B,49152,arb,Arabic (MSA),flores,1012,110523,27721,3.987,False
+smollm2-1.7b,SmolLM2 1.7B,49152,ary_flores,"Darija, Arabic script (FLORES)",flores,1012,106610,27721,3.8458,True
+smollm2-1.7b,SmolLM2 1.7B,49152,ary_doda_ar,"Darija, Arabic script (DODa)",doda,48818,1105044,296513,3.7268,True
+smollm2-1.7b,SmolLM2 1.7B,49152,ary_doda_latn,"Darija, Arabizi (DODa)",doda,48818,602851,296513,2.0331,True
+smollm2-1.7b,SmolLM2 1.7B,49152,swh,Swahili,flores,1012,58364,27721,2.1054,True
+smollm2-1.7b,SmolLM2 1.7B,49152,tzm,"Tamazight, Tifinagh",flores,1012,281370,27721,10.1501,False

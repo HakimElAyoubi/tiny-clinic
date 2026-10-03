@@ -20,4 +20,4 @@ __pycache__/
 .idea/
 
 # Progress files for long jobs
-data/progress.txt
+data/progress/

@@ -1,0 +1,11 @@
+[project]
+name = "tiny-clinic"
+version = "0.1.0"
+description = "Offline referral and documentation support for community health workers"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.9",
+    "tokenizers>=0.21",
+]
